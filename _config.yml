@@ -1,2 +1,33 @@
+# Description of author
+author: Jeremy
+bio: A guy who loves architecture, structure, coding and of course, his wife
+
+# Web-page description
+description: A personal web-page for Jeremy
+
+# If a resume needs to be included, set to true
+resume: false
+resume-external: false
+resume-url:
+
+# Personal url
+url: https://JeremyInCMU/JeremyInCMU.github.io
+
+# If comments are not necessary, then leave categories empty
+disqus:
+  shortname: mydisqus # enter this from disqus account
+  categories: [blog, project] # only show disqus for posts that have these categories
+
+# Add social below like facebook,twitter and github
+github: mygithub
+email: jiamingx@andrew.cmu.edu
+
+#if a large site needed, then change the option below
+# options: [normal, large] | default: normal
+# normal = 560px / large = 810px
+width: normal
+
+
+
 theme: minima
 github: [metadata]
