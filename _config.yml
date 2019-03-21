@@ -5,6 +5,10 @@ bio: A guy who loves architecture, structure, coding and of course, his wife
 # Web-page description
 description: A personal web-page for Jeremy
 
+# Self profile image
+external-image: false
+picture: assets/img/profile.jpg
+
 # If a resume needs to be included, set to true
 resume: false
 resume-external: false
@@ -26,8 +30,6 @@ email: jiamingx@andrew.cmu.edu
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
 width: normal
-
-
 
 theme: minima
 github: [metadata]
