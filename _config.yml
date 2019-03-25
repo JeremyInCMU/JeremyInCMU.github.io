@@ -17,6 +17,8 @@ resume-url:
 # Personal url
 url: https://JeremyInCMU/JeremyInCMU.github.io
 
+permalink: /:title/
+
 # If comments are not necessary, then leave categories empty
 disqus:
   shortname: mydisqus # enter this from disqus account
@@ -30,6 +32,17 @@ email: jiamingx@andrew.cmu.edu
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
 width: normal
+
+# show the "tags" inside the posts
+show-tags: true
+
+# plug-ins
+plug-ins:
+    - jekyll-seo-tag
+    - jekyll-gist
+    - jekyll-feed
+    - jemoji
+    - jekyll-admin
 
 theme: minima
 github: [metadata]
