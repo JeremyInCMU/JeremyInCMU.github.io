@@ -4,7 +4,16 @@
 @import "base/helpers";
 
 @import "pages/page";
+@import "pages/post";
 
 @import "components/footer";
 @import "components/header";
 @import "components/nav";
+@import "components/author";
+@import "components/disqus";
+@import "components/others";
+@import "components/pagination";
+@import "components/share";
+@import "components/side-by-side";
+@import "components/social-links";
+@import "components/spoiler.sass";

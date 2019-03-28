@@ -1,3 +1,6 @@
+---
+layout: compressed
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +15,17 @@
   <link href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
   <link type = "application/rss+xml" title = "{{site.title}}">
 
+  {% seo %}
+
   <style>
   {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
   {{ scss_sheet | scssify }}
   </style>
 </head>
 <body>
-  <div>
+  <div class = "wrapper-{% if site.width == 'normal' %}normal{% elsif site.width == 'large' %} large {% endif %}">
     {% if page.tag %}
-      <div class = "post">
+       <div class = "post">
     {% else %}
       {% if showHeader != true %}
           <div class = "page {{page.title | downcase}}">
@@ -28,8 +33,9 @@
           <div class = "{{page.title | downcase}}">
       {% endif %}
     {% endif %}
-      {{ content}}
+      {{ content }}
     </div>
   </div>
+  {% include icon.html %}
 </body>
 </html>

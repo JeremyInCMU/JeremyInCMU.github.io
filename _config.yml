@@ -2,6 +2,10 @@
 author: Jeremy
 bio: A guy who loves architecture, structure, coding and of course, his wife
 
+# Name of the website
+name: Jeremy's Blog
+title: Jeremy's Blog
+
 # Web-page description
 description: A personal web-page for Jeremy
 
@@ -25,16 +29,38 @@ disqus:
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # Add social below like facebook,twitter and github
-github: mygithub
+github: JeremyInCMU
 email: jiamingx@andrew.cmu.edu
+twitter: Jeremy
+linkedin: Jeremy
+facebook: Jeremy
 
 #if a large site needed, then change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: normal
+width: large
+
+# if you don't need pagination, comment the *paginate* configs below
+paginate: 5
+paginate_path: "blog/:num/"
+
+# Display links for next and previous posts for the specified categories
+post-advance-links: [blog]
+
+# if you don't need "about" or "blog", comment them out below
+about: true
+blog: true
+projects: true
+resume: true
 
 # show the "tags" inside the posts
 show-tags: true
+
+# show read-time of the posts
+read-time: true
+
+# show author of the posts
+show-author: true
 
 # plug-ins
 plug-ins:
@@ -46,3 +72,6 @@ plug-ins:
 
 theme: minima
 github: [metadata]
+
+# if site needs animation
+animation: true
