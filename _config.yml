@@ -11,7 +11,7 @@ description: A personal web-page for Jeremy
 
 # Self profile image
 external-image: false
-picture: assets/img/profile.jpg
+picture: ./assets/img/profile.jpg
 
 # If a resume needs to be included, set to true
 resume: false
@@ -26,7 +26,7 @@ permalink: /:title/
 # If comments are not necessary, then leave categories empty
 disqus:
   shortname: mydisqus # enter this from disqus account
-  categories: [blog, project] # only show disqus for posts that have these categories
+  categories: [project] # only show disqus for posts that have these categories
 
 # Add social below like facebook,twitter and github
 github: JeremyInCMU
@@ -38,7 +38,7 @@ facebook: Jeremy
 #if a large site needed, then change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: large
+width: nomral
 
 # if you don't need pagination, comment the *paginate* configs below
 paginate: 5
@@ -60,7 +60,7 @@ show-tags: true
 read-time: true
 
 # show author of the posts
-show-author: true
+show-author: false
 
 # plug-ins
 plug-ins:

@@ -21,6 +21,7 @@ layout: compressed
   {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
   {{ scss_sheet | scssify }}
   </style>
+
 </head>
 <body>
   <div class = "wrapper-{% if site.width == 'normal' %}normal{% elsif site.width == 'large' %} large {% endif %}">
