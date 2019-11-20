@@ -1,13 +1,13 @@
 # Description of author
-author: Jeremy
+author: Jiaming
 bio: A guy who loves architecture, structure, coding and of course, his wife
 
 # Name of the website
-name: Jeremy's Blog
-title: Jeremy's Blog
+name: Jiaming's Blog
+title: Jiaming's Blog
 
 # Web-page description
-description: A personal web-page for Jeremy
+description: A personal web-page for Jiaming
 
 # Self profile image
 external-image: false
@@ -26,14 +26,14 @@ permalink: /:title/
 # If comments are not necessary, then leave categories empty
 disqus:
   shortname: mydisqus # enter this from disqus account
-  categories: [project] # only show disqus for posts that have these categories
+  categories: [blog] [project] # only show disqus for posts that have these categories
 
 # Add social below like facebook,twitter and github
 github: JeremyInCMU
 email: jiamingx@andrew.cmu.edu
-twitter: Jeremy
-linkedin: Jeremy
-facebook: Jeremy
+#twitter: Jeremy
+#linkedin: Jeremy
+#facebook: Jeremy
 
 #if a large site needed, then change the option below
 # options: [normal, large] | default: normal
@@ -46,6 +46,7 @@ paginate_path: "blog/:num/"
 
 # Display links for next and previous posts for the specified categories
 post-advance-links: [blog]
+post-advance-links: [project]
 
 # if you don't need "about" or "blog", comment them out below
 about: true
