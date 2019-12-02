@@ -26,7 +26,7 @@ permalink: /:title/
 # If comments are not necessary, then leave categories empty
 disqus:
   shortname: mydisqus # enter this from disqus account
-  categories: [blog] # only show disqus for posts that have these categories
+  categories: [blog, projects] # only show disqus for posts that have these categories
 
 # Add social below like facebook,twitter and github
 github: JeremyInCMU
@@ -59,8 +59,11 @@ show-tags: true
 # show read-time of the posts
 read-time: true
 
+# Related posts inside a post
+related: true
+
 # show author of the posts
-show-author: false
+show-author: true
 
 # plug-ins
 plug-ins:
