@@ -26,7 +26,7 @@ permalink: /:title/
 # If comments are not necessary, then leave categories empty
 disqus:
   shortname: mydisqus # enter this from disqus account
-  categories: [blog] [projects] # only show disqus for posts that have these categories
+  categories: [blog] # only show disqus for posts that have these categories
 
 # Add social below like facebook,twitter and github
 github: JeremyInCMU
@@ -46,7 +46,6 @@ paginate_path: "blog/:num/"
 
 # Display links for next and previous posts for the specified categories
 post-advance-links: [blog]
-post-advance-links: [projects]
 
 # if you don't need "about" or "blog", comment them out below
 about: true
