@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Parametric Design
-category: blog
+category: projects
 tags: Parametric Rhino Grasshopper
 hidden: false
 ---
