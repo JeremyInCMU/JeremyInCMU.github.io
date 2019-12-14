@@ -6,8 +6,6 @@ tags: Algo in Architecture
 hidden : false
 ---
 
-** Ideas about my future work **
-
 Three days ago, I found a book named Algorithimc Architecture when viewing a post through my cellphone. The title attracted me at that moment since it is coincident with my expectation about the future of architecture and structural design. That is also the reason why I finally made up my mind to be a structure
 engineer after graduating from CMU. Actually, most of my classmates prefer to be an IT guy working in Silicon Valley after graduation. I still remember the day I started working in the office of the structure design company. It looks like I travelled from modern society to an ancient one by a time machine. For most desktops, the operating systems are windows 7 and the most popular tools are Autodesk CAD 2010 and the microsoft excel.
 But the truth is I did not. Unlike technical companies and IT companies, architecture and structure techniques fell back in the past decade.
