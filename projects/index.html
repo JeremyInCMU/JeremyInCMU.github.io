@@ -1,20 +1,25 @@
 ---
 layout: page
 title: Projects
+lang: zh
 ---
-<section class = "list">
-	{% if site.posts.size == 0 %}
-		<p class = "text-center"> Nothing published yet!</p>
-	{% else %}
-		{% for post in site.posts %}
-			{% if post.category == 'projects' %}
-				<div class = "item {% if post.star %}star{% endif %}">
-					<a class = "url" href = "{{ site.url }}{{ post.url }}">
-						<aside><time datetime="{{ post.date | date: %d-%m-%Y}}">{{ post.date | date: "%b %d %Y"}}</time></aside>
-						<h3 class = "title">{{ post.title }}</h3>
-					</a>
-				</div>
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-</section>
+<div lang = "zh">
+	<section class = "list">
+		{% if site.posts.size == 0 %}
+			<p class = "text-center"> Nothing published yet!</p>
+		{% else %}
+			{% for post in site.posts %}
+				{% if post.category == 'projects' %}
+					<div class = "item {% if post.star %}star{% endif %}">
+						<a class = "url" href = "{{ site.url }}{{ post.url }}">
+							<aside>
+								<time datetime="{{ post.date | date: %d-%m-%Y}}">{{ post.date | date: "%b %d %Y"}}</time>
+							</aside>
+							<h3 class = "title">{{ post.title }}</h3>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</section>
+</div>
