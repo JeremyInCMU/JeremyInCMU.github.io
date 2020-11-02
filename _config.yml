@@ -11,7 +11,7 @@ description: A personal web-page for Jiaming
 
 # Self profile image
 external-image: false
-picture: ./assets/img/profile.jpg
+picture:
 
 # If a resume needs to be included, set to true
 resume: false
