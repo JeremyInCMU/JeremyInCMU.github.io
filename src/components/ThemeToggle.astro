@@ -1,0 +1,101 @@
+---
+// Light/dark toggle. The inline script in BaseHead.astro sets the initial
+// theme before paint so there is no flash; this button only flips it.
+---
+
+<button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <svg class="icon sun" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+    <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <line x1="12" y1="1.8" x2="12" y2="4"></line>
+      <line x1="12" y1="20" x2="12" y2="22.2"></line>
+      <line x1="1.8" y1="12" x2="4" y2="12"></line>
+      <line x1="20" y1="12" x2="22.2" y2="12"></line>
+      <line x1="4.6" y1="4.6" x2="6.2" y2="6.2"></line>
+      <line x1="17.8" y1="17.8" x2="19.4" y2="19.4"></line>
+      <line x1="4.6" y1="19.4" x2="6.2" y2="17.8"></line>
+      <line x1="17.8" y1="6.2" x2="19.4" y2="4.6"></line>
+    </g>
+  </svg>
+  <svg class="icon moon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+    <path
+      d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linejoin="round"></path>
+  </svg>
+</button>
+
+<style>
+  button {
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: var(--text);
+    background: var(--bg-subtle);
+  }
+
+  .icon {
+    grid-area: 1 / 1;
+  }
+
+  /* Show the icon for the theme you'd switch *to*. */
+  .moon {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .sun {
+      display: none;
+    }
+    :global(:root:not([data-theme='light'])) .moon {
+      display: block;
+    }
+  }
+
+  :global(:root[data-theme='dark']) .sun {
+    display: none;
+  }
+  :global(:root[data-theme='dark']) .moon {
+    display: block;
+  }
+
+  :global(:root[data-theme='light']) .sun {
+    display: block;
+  }
+  :global(:root[data-theme='light']) .moon {
+    display: none;
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+
+  const currentTheme = () => {
+    const explicit = document.documentElement.dataset.theme;
+    if (explicit === 'dark' || explicit === 'light') return explicit;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+
+  btn?.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    // localStorage can throw in private mode / blocked-cookie contexts.
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      /* preference just won't persist */
+    }
+  });
+</script>

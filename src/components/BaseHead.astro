@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_AUTHOR } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Set on article pages so Open Graph reports the right type. */
+  type?: 'website' | 'article';
+  publishedDate?: Date;
+}
+
+const { title, description, type = 'website', publishedDate } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Home page shows the bare site title; inner pages get a suffix.
+const fullTitle = title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="author" content={SITE_AUTHOR} />
+<link rel="canonical" href={canonical} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content={SITE_TITLE} />
+{publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+
+<!-- Set the theme before first paint to avoid a light flash on dark setups. -->
+<script is:inline>
+  (() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.dataset.theme = saved;
+      }
+    } catch {
+      /* no stored preference available; fall back to prefers-color-scheme */
+    }
+  })();
+</script>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from 'astro:content';
+
+// The post's frontmatter, spread in by src/pages/blog/[...slug].astro.
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, tags } = Astro.props as Props;
+---
+
+<BaseLayout title={title} description={description} type="article" publishedDate={pubDate}>
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <p class="meta muted">
+        <FormattedDate date={pubDate} />
+        {updatedDate && <span>· updated <FormattedDate date={updatedDate} /></span>}
+      </p>
+      {
+        tags.length > 0 && (
+          <ul class="tags">
+            {tags.map((tag) => (
+              <li>
+                <a href={`/tags/${tag}/`}>#{tag}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    <hr />
+
+    <p><a href="/blog/">← All posts</a></p>
+  </article>
+</BaseLayout>
+
+<style>
+  header {
+    margin-bottom: 2rem;
+  }
+
+  .meta {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.65rem 0 0;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+
+  .tags a {
+    text-decoration: none;
+  }
+
+  .tags a:hover {
+    text-decoration: underline;
+  }
+
+  /* Long-form content gets a touch more room between blocks. */
+  .prose :global(h2) {
+    padding-top: 0.35rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.35rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.4rem;
+  }
+</style>

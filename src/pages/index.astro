@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getPublishedPosts } from '../utils/posts';
+
+const posts = (await getPublishedPosts()).slice(0, 5);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <section class="intro">
+    <h1>Hi, I'm Jeremy.</h1>
+    <p>
+      I work on machine learning for robotics — egocentric video, imitation learning, and
+      the messy engineering that turns a research idea into something that actually runs.
+      This is where I write up what I learn, including the parts that didn't work.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Recent posts</h2>
+
+    {
+      posts.length === 0 ? (
+        <p class="muted">No posts yet. Add a Markdown file to <code>src/content/blog/</code>.</p>
+      ) : (
+        posts.map((post) => (
+          <PostCard
+            href={`/blog/${post.id}/`}
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+          />
+        ))
+      )
+    }
+
+    <p class="more"><a href="/blog/">All posts →</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-bottom: 1rem;
+  }
+
+  .intro p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 38rem;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .more {
+    margin-top: 1.75rem;
+    font-size: 0.95rem;
+  }
+</style>

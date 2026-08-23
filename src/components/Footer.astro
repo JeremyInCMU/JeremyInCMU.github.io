@@ -1,0 +1,51 @@
+---
+import { SITE_AUTHOR, SOCIAL_LINKS } from '../consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="wrap inner">
+    <p class="muted">© {year} {SITE_AUTHOR}</p>
+
+    <ul>
+      {
+        SOCIAL_LINKS.map((link) => (
+          <li>
+            <a href={link.href} rel={link.href.startsWith('http') ? 'me noopener' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="About Jeremy — ML and robotics engineer.">
+  <h1>About</h1>
+
+  <p>
+    I'm Jeremy. I work on machine learning for robotics: teaching systems to act from
+    egocentric video, and building the training and data infrastructure that makes that
+    possible.
+  </p>
+
+  <h2>What I write about</h2>
+
+  <ul>
+    <li>Robot learning — imitation learning, policy architectures, what transfers and what doesn't</li>
+    <li>Egocentric vision — first-person video as a training signal</li>
+    <li>Training infrastructure — data pipelines, loss routing, the unglamorous parts that decide whether a run works</li>
+    <li>Debugging notes — bugs that took a while to find, written down so the next person skips the search</li>
+  </ul>
+
+  <h2>Elsewhere</h2>
+
+  <ul>
+    <li><a href="https://github.com/JeremyInCMU" rel="me noopener">GitHub</a></li>
+    <li><a href="/rss.xml">RSS feed</a></li>
+  </ul>
+
+  <p class="muted">
+    Replace this text with your own bio — it lives in <code>src/pages/about.astro</code>.
+  </p>
+</BaseLayout>

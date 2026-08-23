@@ -1,0 +1,88 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+}
+
+const { href, title, description, pubDate, tags = [] } = Astro.props;
+---
+
+<article>
+  <h2><a href={href}>{title}</a></h2>
+
+  <p class="meta muted">
+    <FormattedDate date={pubDate} />
+    {
+      tags.length > 0 && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span class="tags">
+            {tags.map((tag) => (
+              <a href={`/tags/${tag}/`}>#{tag}</a>
+            ))}
+          </span>
+        </>
+      )
+    }
+  </p>
+
+  <p class="desc">{description}</p>
+</article>
+
+<style>
+  article {
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  article:last-of-type {
+    border-bottom: 0;
+  }
+
+  h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.2rem;
+  }
+
+  h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: var(--accent);
+  }
+
+  .meta {
+    margin: 0 0 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .tags {
+    display: inline-flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .tags a {
+    text-decoration: none;
+  }
+
+  .tags a:hover {
+    text-decoration: underline;
+  }
+
+  .desc {
+    margin: 0;
+    color: var(--text-muted);
+  }
+</style>

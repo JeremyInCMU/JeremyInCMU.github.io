@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPublishedPosts, getAllTags } from '../../utils/posts';
+
+const posts = await getPublishedPosts();
+const tags = await getAllTags();
+---
+
+<BaseLayout title="Blog" description="Posts on machine learning, robot learning, and egocentric vision.">
+  <h1>Blog</h1>
+  <p class="muted count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+
+  {
+    tags.length > 0 && (
+      <ul class="taglist">
+        {tags.map(({ tag, count }) => (
+          <li>
+            <a href={`/tags/${tag}/`}>
+              #{tag} <span class="muted">{count}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    posts.length === 0 ? (
+      <p class="muted">No posts yet.</p>
+    ) : (
+      posts.map((post) => (
+        <PostCard
+          href={`/blog/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
+        />
+      ))
+    )
+  }
+</BaseLayout>
+
+<style>
+  .count {
+    margin-top: -0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .taglist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0.5rem;
+  }
+
+  .taglist a {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    background: var(--bg-subtle);
+  }
+
+  .taglist a:hover {
+    border-color: var(--accent);
+  }
+</style>

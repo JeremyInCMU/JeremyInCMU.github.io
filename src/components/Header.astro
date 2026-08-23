@@ -1,0 +1,83 @@
+---
+import { SITE_TITLE, NAV_LINKS } from '../consts';
+import ThemeToggle from './ThemeToggle.astro';
+
+const path = Astro.url.pathname;
+
+// A link is current when it matches exactly, or when it's a section prefix
+// (so /blog/some-post/ still highlights "Blog"). '/' must match exactly.
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href);
+---
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">{SITE_TITLE}</a>
+
+    <nav aria-label="Main">
+      <ul>
+        {
+          NAV_LINKS.map((link) => (
+            <li>
+              <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.75rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-weight: 680;
+    font-size: 1.0625rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  ul {
+    display: flex;
+    gap: 1.15rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--text);
+    font-weight: 600;
+  }
+</style>
