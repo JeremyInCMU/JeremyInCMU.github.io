@@ -10,13 +10,17 @@ I thought "I should write this down," and each time I didn't. So: a blog.
 
 ## What goes here
 
-Mostly working notes from machine learning and robotics work — the kind of thing I'd
-want to find if I searched for it in six months:
+Working notes on IoT data closed loops: sensor data goes from devices to storage, becomes
+training data, becomes a model, and the model gets deployed back to the devices. Each stage
+gets its own posts:
 
-- Architecture decisions and why I picked one option over another
-- Bugs that took real effort to track down, with the reasoning that found them
-- Training runs that failed in interesting ways
-- Papers I read closely enough to have an opinion about
+- Collection: what the devices sample, how often, and how the data gets off them (MQTT,
+  batch upload, store-and-forward when the network is down)
+- Ingestion and storage: pipelines, formats, and how raw sensor data is partitioned
+- Labeling and curation: how data gets annotated, and how to select which of it to keep
+- Training: what a retrain actually uses, and what triggers one
+- Deployment: converting and quantizing models, then getting them onto the devices
+- Monitoring: measuring whether the deployed model works, and feeding that back to step one
 
 Not tutorials. There are better tutorials than I'd write. These are notes from inside
 a specific problem, which is a different and sometimes more useful thing.

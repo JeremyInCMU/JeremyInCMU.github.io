@@ -1,8 +1,8 @@
 // Edit these to make the site yours.
-export const SITE_TITLE = 'Jiaming Xiao';
+export const SITE_TITLE = 'JeremyX';
 export const SITE_DESCRIPTION =
-  'Notes on machine learning, robot learning, and egocentric vision.';
-export const SITE_AUTHOR = 'Jiaming Xiao';
+  'Notes on systems.';
+export const SITE_AUTHOR = 'JeremyX';
 
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
